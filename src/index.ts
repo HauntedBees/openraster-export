@@ -48,7 +48,7 @@ interface MergeInfo {
     offsetX:number;
     offsetY:number;
 }
-const OpenRasterExport = async function(filepath:string, options:ORAOptions):Promise<string> {
+export const OpenRasterExport = async function(filepath:string, options:ORAOptions):Promise<string> {
     if(!fs.existsSync(filepath)) { throw new Error(`File ${filepath} does not exist.`); }
     const zip = new StreamZip.async({ file: filepath });
     const xmlBuffer = await zip.entryData("stack.xml");
@@ -93,4 +93,3 @@ const OpenRasterExport = async function(filepath:string, options:ORAOptions):Pro
     }
     return mergeImages(layerBuffers, options.mergeImageOptions);
 };
-export default OpenRasterExport;
