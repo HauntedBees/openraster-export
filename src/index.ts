@@ -93,3 +93,4 @@ export const OpenRasterExport = async function(filepath:string, options:ORAOptio
     }
     return mergeImages(layerBuffers, options.mergeImageOptions);
 };
+export default OpenRasterExport;

@@ -11,7 +11,7 @@ npm install openraster-export
 ## Usage
 
 ```js
-const OpenRasterExport = require("openraster-export").OpenRasterExport;
+const OpenRasterExport = require("openraster-export").default;
 OpenRasterExport("C:/path/to/file.ora", {
     includeLayers: ["layer1", "layer2"]
 }).then(b64 => ...);
