@@ -85,12 +85,17 @@ export const OpenRasterExport = async function(filepath:string, options:ORAOptio
     if(options.mergeImageOptions) {
         if(!options.mergeImageOptions.Canvas) { options.mergeImageOptions.Canvas = Canvas; }
         if(!options.mergeImageOptions.Image) { options.mergeImageOptions.Image = Image; }
+        if(!options.mergeImageOptions.width) { options.mergeImageOptions.width = imgInfo.image.$w; }
+        if(!options.mergeImageOptions.height) { options.mergeImageOptions.width = imgInfo.image.$h; }
     } else {
         options.mergeImageOptions = {
             Canvas: Canvas,
-            Image: Image
+            Image: Image,
+            width: imgInfo.image.$w,
+            height: imgInfo.image.$h
         }
     }
+    if(!layerBuffers.length) { return ""; }
     return mergeImages(layerBuffers, options.mergeImageOptions);
 };
 export default OpenRasterExport;
