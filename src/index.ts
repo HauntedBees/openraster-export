@@ -46,8 +46,8 @@ export interface ORAFile { image:ORAImage }
 
 interface MergeInfo {
     src:Buffer;
-    offsetX:number;
-    offsetY:number;
+    x:number;
+    y:number;
 }
 export const OpenRasterExport = async function(filepath:string, options:ORAOptions):Promise<string> {
     if(!fs.existsSync(filepath)) { throw new Error(`File ${filepath} does not exist.`); }
@@ -66,8 +66,8 @@ export const OpenRasterExport = async function(filepath:string, options:ORAOptio
                 const buffer = await zip.entryData(layers[i].$src);
                 layerBuffers.push({
                     src: buffer,
-                    offsetX: layers[i].$x || 0,
-                    offsetY: layers[i].$y || 0
+                    x: layers[i].$x || 0,
+                    y: layers[i].$y || 0
                 });
             }
         } else {
@@ -77,8 +77,8 @@ export const OpenRasterExport = async function(filepath:string, options:ORAOptio
                 const buffer = await zip.entryData(layers[i].$src);
                 layerBuffers.push({
                     src: buffer,
-                    offsetX: layers[i].$x || 0,
-                    offsetY: layers[i].$y || 0
+                    x: layers[i].$x || 0,
+                    y: layers[i].$y || 0
                 });
             }
         }

@@ -1,6 +1,6 @@
 {
   "name": "openraster-export",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A tool to programatically export ORA files into images based on their layers.",
   "homepage": "https://github.com/HauntedBees/openraster-export",
   "main": "dist/index.js",
