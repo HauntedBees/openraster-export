@@ -55,7 +55,7 @@ export const OpenRasterExport = async function(filepath:string, options:ORAOptio
     const imgInfo:ORAFile = parser.parse(xmlBuffer.toString(), { ignoreAttributes: false, attributeNamePrefix: "$", parseAttributeValue: true });
     const layers = imgInfo.image.stack.layer;
     const layerBuffers:MergeInfo[] = [];
-    for(let i = 0; i < layers.length; i++) {
+    for(let i = (layers.length - 1); i >= 0; i--) {
         const name = layers[i].$name || "";
         if(options.excludeHidden && layers[i].$visibility === "hidden") { continue; }
         if(options.includeLayers || options.includeRegex) {
