@@ -87,7 +87,7 @@ export const OpenRasterExport = async function(filepath:string, options:ORAOptio
         if(!options.mergeImageOptions.Canvas) { options.mergeImageOptions.Canvas = Canvas; }
         if(!options.mergeImageOptions.Image) { options.mergeImageOptions.Image = Image; }
         if(!options.shrink && !options.mergeImageOptions.width) { options.mergeImageOptions.width = imgInfo.image.$w; }
-        if(!options.shrink && !options.mergeImageOptions.height) { options.mergeImageOptions.width = imgInfo.image.$h; }
+        if(!options.shrink && !options.mergeImageOptions.height) { options.mergeImageOptions.height = imgInfo.image.$h; }
     } else {
         options.mergeImageOptions = {
             Canvas: Canvas,
@@ -95,7 +95,7 @@ export const OpenRasterExport = async function(filepath:string, options:ORAOptio
         }
         if(!options.shrink) {
             options.mergeImageOptions.width = imgInfo.image.$w;
-            options.mergeImageOptions.width = imgInfo.image.$h;
+            options.mergeImageOptions.height = imgInfo.image.$h;
         }
     }
     if(!layerBuffers.length) { return ""; }
