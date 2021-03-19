@@ -6,6 +6,7 @@ import { Canvas, Image } from 'canvas';
 
 export interface ORAOptions {
     excludeHidden?:boolean;
+    shrink?:boolean;
     excludeLayers?:string[];
     includeLayers?:string[];
     excludeRegex?:RegExp;
@@ -85,14 +86,16 @@ export const OpenRasterExport = async function(filepath:string, options:ORAOptio
     if(options.mergeImageOptions) {
         if(!options.mergeImageOptions.Canvas) { options.mergeImageOptions.Canvas = Canvas; }
         if(!options.mergeImageOptions.Image) { options.mergeImageOptions.Image = Image; }
-        if(!options.mergeImageOptions.width) { options.mergeImageOptions.width = imgInfo.image.$w; }
-        if(!options.mergeImageOptions.height) { options.mergeImageOptions.width = imgInfo.image.$h; }
+        if(!options.shrink && !options.mergeImageOptions.width) { options.mergeImageOptions.width = imgInfo.image.$w; }
+        if(!options.shrink && !options.mergeImageOptions.height) { options.mergeImageOptions.width = imgInfo.image.$h; }
     } else {
         options.mergeImageOptions = {
             Canvas: Canvas,
-            Image: Image,
-            width: imgInfo.image.$w,
-            height: imgInfo.image.$h
+            Image: Image
+        }
+        if(!options.shrink) {
+            options.mergeImageOptions.width = imgInfo.image.$w;
+            options.mergeImageOptions.width = imgInfo.image.$h;
         }
     }
     if(!layerBuffers.length) { return ""; }

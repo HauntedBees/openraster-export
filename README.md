@@ -70,6 +70,13 @@ Default: `undefined`
 
 A regular expression that, if a layer name matches, will exclude from layer in the exported image.
 
+##### options.shrink
+
+Type: `boolean`
+Default: `false`
+
+If true, the resulting image will be the smallest size that fits all layers, instead of the size of the ORA canvas.
+
 ##### options.mergeImageOptions
 
 Type: `mergeImages.Options`
