@@ -83,6 +83,17 @@ export const OpenRasterExport = async function(filepath:string, options:ORAOptio
             }
         }
     }
+    if(options.shrink) {
+        let lowestX = -1, lowestY = -1;
+        layerBuffers.forEach(l => {
+            if(lowestX < 0 || l.x < lowestX) { lowestX = l.x; }
+            if(lowestY < 0 || l.y < lowestY) { lowestY = l.y; }
+        });
+        layerBuffers.forEach(l => {
+            l.x -= lowestX;
+            l.y -= lowestY;
+        });
+    }
     if(options.mergeImageOptions) {
         if(!options.mergeImageOptions.Canvas) { options.mergeImageOptions.Canvas = Canvas; }
         if(!options.mergeImageOptions.Image) { options.mergeImageOptions.Image = Image; }
