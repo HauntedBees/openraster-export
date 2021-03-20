@@ -35,6 +35,8 @@ Type: `option`
 
 You can use either `includeLayers` and/or `includeRegex`, or you can use either `excludeLayers` and/or `excludeRegex`, but you cannot mix includes and excludes. If set, `excludeHidden` will take priority over any `includeLayers`/`includeRegex` rules.
 
+**Gamer Pro-Tip:** Do not use the `g` flag on RegExps passed to `includeRegex` or `excludeRegex` (use `/^something$/`, not `/^something$/g`) or things will fail in weird ways. [I promise it's not my fault.](https://stackoverflow.com/questions/3891641/regex-test-only-works-every-other-time)
+
 #### options.excludeHidden
 
 Type: `boolean`
