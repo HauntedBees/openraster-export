@@ -21,14 +21,13 @@ export interface ORALayer {
     $y?:number;
     $opacity?:number;
     $visibility?:string;
-    $selected?:boolean;
-    //$composite-op?:string;
+    "$composite-op?":string;
 }
 export interface ORAStack {
     layer:ORALayer[];
     $opacity:number;
     $visibility:string;
-    //$composite-op:string;
+    "$composite-op":string;
     $isolation:string;
     $name:string;
     $x:number;

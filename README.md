@@ -17,6 +17,16 @@ OpenRasterExport("C:/path/to/file.ora", {
 }).then(b64 => ...);
 ```
 
+## Supported Functionality
+
+Currently only one root level `stack` is supported. This stack may have any number of layers, but any sub-stacks will not be included.
+
+On the `image` element, the `w` and `h` attributes are used for your final image resolution, unless you pass the `shrink` option described below. `xres` and `yres` are unused.
+
+On the root-level `stack`, only the `layer` array is used.
+
+On the `layer` elements, the `name` attribute is compared against any of the include/exclude layer rules described below. The `x` and `y` attributes are used for positioning the layer. `visibility` is only considered if the `excludeHidden` option is passed - by default all layers that meet the include/exclude rules (or all layers, if no rules are given) will be included in the exported image. The `opacity` and `composite-op` attributes are currently unused, and all layers will be merged with an opacity of 1 and the default composite operator of `svg:src-over`.
+
 ## API
 
 ### OpenRasterExport(imagepath, [options])
@@ -27,7 +37,7 @@ Returns a Promise which resolves to a base64 data URI
 
 Type: `string`
 
-Path to an ORA file. Currently only ORA files with one `stack` and any number of layers is supported.
+Path to the ORA file you want to convert to a single image.
 
 #### options
 
